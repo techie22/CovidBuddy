@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- FireBase Links -->
+    <scrtipt src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js"></scrtipt>
+    <scrtipt src="https://www.gstatic.com/firebasejs/9.1.1/firebase-analytics.js"></scrtipt>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <title>Self Test</title>
+</head>
+
+<body>
+    <!-- nav bar Start -->
+    <nav class="navbar navbar-expand-lg" style="background-color:#FFC107 ;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"> <img src="diamond.png" alt="Logo" width="45px">Covid Buddy</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" aria-current="page" href="main.html">Dashboard</a>
+                        <a class="nav-link" href="vaccination.html">Vaccination Centers</a>
+                        <a class="nav-link" href="total_vaccination.html">Vaccinations information</a>
+                        <a class="nav-link" href="chatbot.html">Covid Awareness</a>
+                        <a class="nav-link" href="Records.html">India Cases</a>
+                        <a class="nav-link" href="selfTest.html">Self Test</a>
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                        <a class="nav-link text-end" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- nav bar ends -->
+        <br>
+    <div class="page-wrap d-flex flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <h2 style="color: #280645;">This test is for your Safety</h2>
+                    <img src="diamond.png" alt="Logo" width="45px"><br><br>
+                    <form class="myform">
+
+                        <div class="mb-3 ">
+                            <label class="form-label">Do you have Fever</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="fever" id="f1" value="yes">
+                                <label class="form-check-label" for="f1">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="fever" id="f2" value="no">
+                                <label class="form-check-label" for="f2">No</label>
+                            </div>
+                        </div>
+                        <!-- cold -->
+                        <div class="mb-3 ">
+                            <label class="form-label">Do you have Cold</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="cold" id="cold1" value="yes">
+                                <label class="form-check-label" for="cold1">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="cold" id="cold2" value="no">
+                                <label class="form-check-label" for="cold2">No</label>
+                            </div>
+                        </div>
+                        <!-- cough -->
+                        <div class="mb-3">
+                            <label class="form-label">Do you have Cough</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="cough" id="cough1" value="yes">
+                                <label class="form-check-label" for="cough1">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="cough" id="cough2" value="no">
+                                <label class="form-check-label" for="cough2">No</label>
+                            </div>
+                        </div>
+                         <!-- soar throat -->
+                         <div class="mb-3">
+                            <label class="form-label">Do you have Soar Throat</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="soarThroat" id="st1" value="yes">
+                                <label class="form-check-label" for="st1">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="soarThroat" id="st2" value="no">
+                                <label class="form-check-label" for="st2">No</label>
+                            </div>
+                        </div>
+                        <!-- taste smell -->
+                        <div class="mb-3 ">
+                            <label class="form-label">Do you feel taste or smell</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tastesmell" id="ts1" value="yes">
+                                <label class="form-check-label" for="ts1">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tastesmell" id="ts2" value="no">
+                                <label class="form-check-label" for="ts2">No</label>
+                            </div>
+                        </div>
+                        <!-- Travel15 -->
+                        <div class="mb-3 ">
+                            <label class="form-label">Have you travel anywhere in the last 15 days</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="travel15" id="travel1" value="yes">
+                                <label class="form-check-label" for="travel1">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="travel15" id="travel2" value="no">
+                                <label class="form-check-label" for="travel2">No</label>
+                            </div>
+                        </div>
+                        <!-- travel 30 -->
+                        <div class="mb-3 ">
+                            <label class="form-label">Have you travel anywhere in the last 30 days</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="travel30" id="travel3" value="yes">
+                                <label class="form-check-label" for="travel3">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="travel30" required id="travel4" value="no">
+                                <label class="form-check-label" for="travel4">No</label>
+                            </div>
+                        </div>
+                        <!-- multiple option -->
+                        <!-- travel 2months -->
+                        <div class="mb-3 ">
+                            <label class="form-label">Have you travel anywhere in the last 2 months</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="travel2m" id="travel5" value="yes">
+                                <label class="form-check-label" for="travel5">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="travel2m" id="travel6" value="no">
+                                <label class="form-check-label" for="travel6">No</label>
+                            </div>
+                        </div>
+                        <label><b>Do Have any of the following dieases</b></label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input checkb" name="disease[]" type="checkbox" id="asthma" value="asthma">
+                            <label class="form-check-label" for="asthma">Asthma</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input checkb" name="disease[]" type="checkbox" id="chestC" value="chestC">
+                            <label class="form-check-label" for="chestC">Chest Congestion</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input checkb" name="disease[]" type="checkbox" id="diabetes" value="diabetes">
+                            <label class="form-check-label" for="diabetes">diabetes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input checkb" name="disease[]" type="checkbox" id="kidney" value="KidneyD">
+                            <label class="form-check-label" for="kidney">Kideny Disorder</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input checkb" name="disease[]" type="checkbox" id="lung" value="LungD">
+                            <label class="form-check-label" for="lung">Lung disease</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                                <input class="form-check-input checkb" name="none" onclick="uncheckall()"  type="checkbox" id="none" value="none">
+                                <label class="form-check-label" for="none">None</label>
+                            </div>
+
+                        <button  class="w-100 btn btn-lg btn-primary mt-4" onclick="check()" type="button">Submit</button>
+                        <button class="w-100 btn btn-lg btn-primary mt-4" onclick="skip()" type="button">Skip</button>
+
+                        <div class="alert alert-danger mt-5" style="display:none" role="alert">
+                           
+                          </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="./js/selfTest.js"></script>
+</body>
+
+</html>
